@@ -40,8 +40,8 @@ let stdenv = pkgs.stdenv;
 
     exim = pkgs.exim.overrideDerivation (super: {
       buildInputs = super.buildInputs ++ [ pkgs.sqlite ];
-      nativeBuildInputs = [ pkgs.perl pkgs.pkgconfig pkgs.stdenv.cc ];
-      depsBuildBuild = [ pkgs.buildPackages.stdenv.cc ];
+      nativeBuildInputs = [ pkgs.pkgconfig pkgs.stdenv.cc ];
+      depsBuildBuild = [ pkgs.buildPackages.stdenv.cc pkgs.buildPackages.perl ];
       preBuild = ''
         ${super.preBuild}
         mv Local/Makefile Local/Makefile.bak
